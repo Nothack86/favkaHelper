@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
-const { mailPass, mailUser, mailHost, roleOvereny } = require('./config.json');
+const { mailPass, mailUser, mailHost, roleOvereny } = require('../../config.json');
 
 function mailSender(targetOrion, sendMess) {
     // Vytvořte transport
@@ -159,7 +159,7 @@ module.exports = {
                     });
                 } else {
                     console.log('Zadán špatný kód');
-                    interaction.reply("Zadán chybný kód");
+                    interaction.reply({ content: "Zadán chybný kód", ephemeral: true });
                 }
             }
         });
