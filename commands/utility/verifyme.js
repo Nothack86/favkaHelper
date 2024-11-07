@@ -1,7 +1,9 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 const { mailPass, mailUser, mailHost, roleOvereny } = require('../../config.json');
+const { isNull } = require('util');
 
 function mailSender(targetOrion, sendMess) {
     // Vytvořte transport
@@ -46,6 +48,14 @@ function mailSender(targetOrion, sendMess) {
     return mailCode;
 }
 
+function hash(orionToHash) {
+    if (orionToHash == null) {
+        return null;
+    } else {
+        return crypto.createHash('sha256').update(orionToHash).digest('hex')
+    }
+}
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('verifyme')
@@ -75,6 +85,7 @@ module.exports = {
 
     async execute(interaction) {
         const orion = interaction.options.getString('orion');
+        const orionHash = hash(orion);
         const verifcode = interaction.options.getString('verifcode');
         const subcommand = interaction.options.getSubcommand();
 
@@ -94,13 +105,13 @@ module.exports = {
                 if (item !== undefined) {
                     if (item.trys >= 3) {
                         interaction.reply({ content: "Počet pokusů vyčerpán", ephemeral: true });
-                    } else if (item.orion == orion) {
+                    } else if (item.orion == orionHash) {
                         interaction.reply({ content: "Tento email už máš zaregistrovaný", ephemeral: true });
                     } else if (item.checked == true) {
                         interaction.reply({ content: "Tvůj účet už je ověřený", ephemeral: true });
                     } else {
                         // přepíše orion v souboru
-                        item.orion = orion;
+                        item.orion = orionHash;
                         item.verif = mailSender(orion, false);
                         item.trys = item.trys + 1;
                         const updatedJsonString = JSON.stringify(data, null, 2);
@@ -111,7 +122,7 @@ module.exports = {
                                 console.error('Chyba při ukládání souboru:', err);
                                 interaction.reply({ content: "Něco se pokazilo", ephemeral: true });
                             } else {
-                                console.log('Orion uživate %s změněn', orion);
+                                console.log('Orion uživate %s změněn', orionHash);
                                 const replMess = "Orion byl aktualizován. V případě potřeby jej můžeš ještě "+ (3-item.trys) + " krát změnit.";
                                 interaction.reply({ content: replMess, ephemeral: true });
                             };
@@ -121,7 +132,7 @@ module.exports = {
                     const mailCode = mailSender(orion, true);
 
                     // Přidání nového prvku do pole
-                    data.push({ discordid: interaction.member.user.id, discordname: interaction.member.user.username, orion: orion, verif: mailCode, checked: false, trys: 1 });
+                    data.push({ discordid: interaction.member.user.id, discordname: interaction.member.user.username, orion: orionHash, verif: mailCode, checked: false, trys: 1 });
 
                     // Převedení pole zpět na JSON
                     const updatedJsonString = JSON.stringify(data, null, 2);
