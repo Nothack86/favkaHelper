@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('fs');
-const { owner } = require('./config.json');
+const { owner } = require('../../config.json');
 
 function getNickname(troublemaker) {
     guild.members.fetch(troublemaker).then(member => {
