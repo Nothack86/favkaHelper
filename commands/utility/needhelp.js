@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('fs');
-const { botRoom } = require('./config.json');
+const { botRoom } = require('../../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
