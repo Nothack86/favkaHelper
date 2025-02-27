@@ -45,7 +45,7 @@ client.on(Events.InteractionCreate, async interaction => {
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 	}
-	console.log(interaction);
+	//console.log(interaction);
 });
 
 // When the client is ready, run this code (only once).
