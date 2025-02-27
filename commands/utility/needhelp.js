@@ -43,18 +43,18 @@ module.exports = {
 
             if (interaction.options.getString("reason")) {
                 reason = interaction.options.getString("reason");
-                botChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu [${channelName}](${messageLink}) s '${reason}'.`);
+                botChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu ${messageLink} s '${reason}'.`);
             } else {
-                botChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu [${channelName}](${messageLink})`);
+                botChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu ${messageLink} .`);
             }
         } else {
             // 'normal' subcommand nebo jakýkoliv jiný
             const heplChannel = interaction.client.channels.cache.get("1344726883610263715");
             if (interaction.options.getString("reason")) {
                 reason = interaction.options.getString("reason");
-                heplChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu [${channelName}](${messageLink}) s "${reason}".`);
+                heplChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu ${messageLink} s "${reason}".`);
             } else {
-                heplChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu [${channelName}](${messageLink})`);
+                heplChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu ${messageLink} .`);
             }
         }
         
