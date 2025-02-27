@@ -1,6 +1,6 @@
 config.json
 /favaci.json
-*group.json
+*Group.json
 # Logs
 logs
 *.log
