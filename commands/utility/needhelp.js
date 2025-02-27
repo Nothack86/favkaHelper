@@ -15,11 +15,7 @@ module.exports = {
             subcommand
                 .setName('modhelp')
                 .setDescription('Pošle upozornění moderátorům.')
-				.addStringOption(option =>
-					option.setName('reason')
-						.setDescription('Můžeš připsat s čím potřebuješ pomoct.')
-						.setRequired(false)
-				)),
+		),
 	async execute(interaction) {
 		const { commandName, channel } = interaction;
 		const userId = interaction.member.user.id; 
