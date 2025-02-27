@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { owner } = require('../../config.json');
+const { ownerId } = require('../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,7 +14,7 @@ module.exports = {
         const userId = interaction.user.id;
         const { channel } = interaction;
         
-        if (userId === owner) {
+        if (userId === ownerId) {
             const message = interaction.options.getString('message');
             await channel.send(message); // Přidáno await pro asynchronní volání
             await interaction.reply({ content: 'Odesláno', ephemeral: true });
