@@ -32,6 +32,9 @@ module.exports = {
         const channelName = channel.name;
         let reason = "";
         
+        // Vytvoříme odkaz přímo na zprávu, která spustila příkaz
+        const messageLink = `https://discord.com/channels/${interaction.guild.id}/${channel.id}/${interaction.id}`;
+        
         // Zjistíme, který subcommand byl použit
         const subcommand = interaction.options.getSubcommand();
 
@@ -40,21 +43,21 @@ module.exports = {
 
             if (interaction.options.getString("reason")) {
                 reason = interaction.options.getString("reason");
-                botChannel.send(`Uživatel ${username} potřebuje pomoct v kanálu ${channelName} s '${reason}'.`);
+                botChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu [${channelName}](${messageLink}) s '${reason}'.`);
             } else {
-                botChannel.send(`Uživatel ${username} potřebuje pomoct v kanálu ${channelName}`);
+                botChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu [${channelName}](${messageLink})`);
             }
         } else {
             // 'normal' subcommand nebo jakýkoliv jiný
             const heplChannel = interaction.client.channels.cache.get("1344726883610263715");
             if (interaction.options.getString("reason")) {
                 reason = interaction.options.getString("reason");
-                heplChannel.send(`Uživatel ${username} potřebuje pomoct v kanálu ${channelName} s '${reason}'.`);
+                heplChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu [${channelName}](${messageLink}) s "${reason}".`);
             } else {
-                heplChannel.send(`Uživatel ${username} potřebuje pomoct v kanálu ${channelName}`);
+                heplChannel.send(`Uživatel <@${userId}> potřebuje pomoct v kanálu [${channelName}](${messageLink})`);
             }
         }
         
-        await interaction.reply({ content: "Upozornění odesláno.", ephemeral: true });
+        await interaction.reply({ content: "Upozornění odesláno.", ephemeral: false });
     },
 };
