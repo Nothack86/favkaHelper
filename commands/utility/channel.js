@@ -14,7 +14,7 @@ module.exports = {
                 .setDescription('Zpřístupní kanál uživateli')
                 .addStringOption(option =>
                     option.setName('channelname')
-                        .setDescription('Jméno kanálu, který chcete zobrazit')
+                        .setDescription('Jméno kanálu nebo jména kanálů oddělená mezerami')
                         .setRequired(true)
                 )
         )
@@ -24,7 +24,7 @@ module.exports = {
                 .setDescription('Skryje kanál uživateli')
                 .addStringOption(option =>
                     option.setName('channelname')
-                        .setDescription('Jméno kanálu, který chcete skrýt')
+                        .setDescription('Jméno kanálu nebo jména kanálů oddělená mezerami')
                         .setRequired(true)
                 )
         ),
@@ -32,7 +32,8 @@ module.exports = {
     async execute(interaction) {
         const userId = interaction.member.user.id;
         const subcommand = interaction.options.getSubcommand();
-        const channelName = interaction.options.getString('channelname');
+        const channelNameInput = interaction.options.getString('channelname');
+        const channelNames = channelNameInput.split(' ').filter(name => name.trim() !== '');
         const guild = interaction.guild;
 
         try {
@@ -60,31 +61,6 @@ module.exports = {
                 });
             }
             
-            // Find the channel by name in the channels.json file
-            const channelInfo = channelsData.find(ch => ch.channelname === channelName);
-            
-            if (!channelInfo) {
-                return await interaction.editReply({ 
-                    content: `Kanál s názvem "${channelName}" nebyl nalezen v seznamu kanálů.` 
-                });
-            }
-            
-            // Get the channel using the ID from channels.json - improve error handling
-            let channel;
-            try {
-                channel = await guild.channels.fetch(channelInfo.channelid);
-            } catch (fetchError) {
-                return await interaction.editReply({ 
-                    content: `Kanál s názvem "${channelName}" existuje v seznamu, ale není dostupný na serveru.` 
-                });
-            }
-            
-            if (!channel) {
-                return await interaction.editReply({ 
-                    content: `Kanál s názvem "${channelName}" existuje v seznamu, ale není dostupný na serveru.` 
-                });
-            }
-            
             // Check bot permissions
             const botMember = interaction.guild.members.me;
             if (!botMember.permissions.has(PermissionsBitField.Flags.ManageChannels)) {
@@ -93,21 +69,53 @@ module.exports = {
                 });
             }
             
-            if (subcommand === 'show') {
-                await channel.permissionOverwrites.create(userId, {
-                    ViewChannel: true
-                });
-                await interaction.editReply({ 
-                    content: `Kanál "${channelName}" byl pro vás zpřístupněn.` 
-                });
-            } else if (subcommand === 'hide') {
-                await channel.permissionOverwrites.create(userId, {
-                    ViewChannel: false
-                });
-                await interaction.editReply({ 
-                    content: `Kanál "${channelName}" byl pro vás skryt.` 
-                });
+            // Process each channel
+            const results = [];
+            
+            for (const channelName of channelNames) {
+                // Find the channel by name in the channels.json file
+                const channelInfo = channelsData.find(ch => ch.channelname === channelName);
+                
+                if (!channelInfo) {
+                    results.push(`❌ Kanál "${channelName}" nebyl nalezen v seznamu kanálů.`);
+                    continue;
+                }
+                
+                // Get the channel using the ID from channels.json
+                let channel;
+                try {
+                    channel = await guild.channels.fetch(channelInfo.channelid);
+                } catch (fetchError) {
+                    results.push(`❌ Kanál "${channelName}" existuje v seznamu, ale není dostupný na serveru.`);
+                    continue;
+                }
+                
+                if (!channel) {
+                    results.push(`❌ Kanál "${channelName}" existuje v seznamu, ale není dostupný na serveru.`);
+                    continue;
+                }
+                
+                try {
+                    if (subcommand === 'show') {
+                        await channel.permissionOverwrites.create(userId, {
+                            ViewChannel: true
+                        });
+                        results.push(`✅ Kanál "${channelName}" byl pro vás zpřístupněn.`);
+                    } else if (subcommand === 'hide') {
+                        await channel.permissionOverwrites.create(userId, {
+                            ViewChannel: false
+                        });
+                        results.push(`✅ Kanál "${channelName}" byl pro vás skryt.`);
+                    }
+                } catch (permError) {
+                    results.push(`❌ Nepodařilo se upravit oprávnění pro kanál "${channelName}".`);
+                }
             }
+            
+            // Send summary of all operations
+            await interaction.editReply({ 
+                content: results.join('\n')
+            });
             
         } catch (error) {
             console.error('Channel command error:', error);
