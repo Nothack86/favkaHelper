@@ -128,5 +128,250 @@
         "channelname": "zep-e",
         "channelcategory": "1274851898113003520",
         "channelid": "1335045294672580652"
+    },
+    {
+        "channelname": "laa",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274853130361770136"
+    },
+    {
+        "channelname": "smp",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274854790630735983"
+    },
+    {
+        "channelname": "ma1",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274853295453634570"
+    },
+    {
+        "channelname": "sdp",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274854728291061912"
+    },
+    {
+        "channelname": "deg1",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274856843960782931"
+    },
+    {
+        "channelname": "sla",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274876232747454588"
+    },
+    {
+        "channelname": "jmm",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274876441229660251"
+    },
+    {
+        "channelname": "umv",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274876500134461450"
+    },
+    {
+        "channelname": "lab",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274880911531577364"
+    },
+    {
+        "channelname": "m1s",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1274881015944581121"
+    },
+    {
+        "channelname": "ma2",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1335024679412568165"
+    },
+    {
+        "channelname": "dma",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1335024940705120307"
+    },
+    {
+        "channelname": "sdr",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1335025053644882103"
+    },
+    {
+        "channelname": "deg2",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1335046418548658207"
+    },
+    {
+        "channelname": "m2s",
+        "channelcategory": "1274852683727245322",
+        "channelid": "1335046503244369982"
+    },
+    {
+        "channelname": "zoet",
+        "channelcategory": "1274853458943414342",
+        "channelid": "1274853659309768737"
+    },
+    {
+        "channelname": "ek1",
+        "channelcategory": "1274853458943414342",
+        "channelid": "1274858059549901035"
+    },
+    {
+        "channelname": "ek2",
+        "channelcategory": "1274853458943414342",
+        "channelid": "1335042438343032932"
+    },
+    {
+        "channelname": "dft",
+        "channelcategory": "1274853801584623726",
+        "channelid": "1274853883092402217"
+    },
+    {
+        "channelname": "ksk",
+        "channelcategory": "1274853801584623726",
+        "channelid": "1274858176675844216"
+    },
+    {
+        "channelname": "etp",
+        "channelcategory": "1274853801584623726",
+        "channelid": "1274861577492758591"
+    },
+    {
+        "channelname": "aep3-4",
+        "channelcategory": "1274854881227706418",
+        "channelid": "1274855304928170096"
+    },
+    {
+        "channelname": "aep5-6",
+        "channelcategory": "1274854881227706418",
+        "channelid": "1274855362868154452"
+    },
+    {
+        "channelname": "ugem",
+        "channelcategory": "1274856627719245895",
+        "channelid": "1274856743255539742"
+    },
+    {
+        "channelname": "ge1",
+        "channelcategory": "1274856627719245895",
+        "channelid": "1335026428110176377"
+    },
+    {
+        "channelname": "tng",
+        "channelcategory": "1274856627719245895",
+        "channelid": "1335028684633018400"
+    },
+    {
+        "channelname": "zkyi",
+        "channelcategory": "1274860773612716173",
+        "channelid": "1274861208100540539"
+    },
+    {
+        "channelname": "hkui",
+        "channelcategory": "1274860773612716173",
+        "channelid": "1274872558822490123"
+    },
+    {
+        "channelname": "uim",
+        "channelcategory": "1274860773612716173",
+        "channelid": "1274873072624599181"
+    },
+    {
+        "channelname": "8eoai",
+        "channelcategory": "1274860773612716173",
+        "channelid": "1274875383640231947"
+    },
+    {
+        "channelname": "zky",
+        "channelcategory": "1274860773612716173",
+        "channelid": "1335024595794661522"
+    },
+    {
+        "channelname": "matl",
+        "channelcategory": "1274860773612716173",
+        "channelid": "1335039568252239942"
+    },
+    {
+        "channelname": "simul",
+        "channelcategory": "1274860773612716173",
+        "channelid": "1335039725173477468"
+    },
+    {
+        "channelname": "zeei",
+        "channelcategory": "1274868934100914197",
+        "channelid": "1274869053181132883"
+    },
+    {
+        "channelname": "m-matl",
+        "channelcategory": "1274876957632364634",
+        "channelid": "1274877407672930396"
+    },
+    {
+        "channelname": "sma1",
+        "channelcategory": "1274876957632364634",
+        "channelid": "1274881187869102227"
+    },
+    {
+        "channelname": "udst",
+        "channelcategory": "1274876957632364634",
+        "channelid": "1274881814665760801"
+    },
+    {
+        "channelname": "umm",
+        "channelcategory": "1274876957632364634",
+        "channelid": "1335028971753967747"
+    },
+    {
+        "channelname": "sta",
+        "channelcategory": "1274876957632364634",
+        "channelid": "1335043903673466890"
+    },
+    {
+        "channelname": "ssta",
+        "channelcategory": "1274876957632364634",
+        "channelid": "1335043945088155739"
+    },
+    {
+        "channelname": "ubi",
+        "channelcategory": "1274876957632364634",
+        "channelid": "1335044106589569085"
+    },
+    {
+        "channelname": "pos1",
+        "channelcategory": "1274876957632364634",
+        "channelid": "1335046641828364463"
+    },
+    {
+        "channelname": "ztm1",
+        "channelcategory": "1274876957632364634",
+        "channelid": "1335046693305188405"
+    },
+    {
+        "channelname": "zkfav",
+        "channelcategory": "1274879734093840387",
+        "channelid": "1274879796190646302"
+    },
+    {
+        "channelname": "geos",
+        "channelcategory": "1274880686632865823",
+        "channelid": "1274880747513057363"
+    },
+    {
+        "channelname": "ozp",
+        "channelcategory": "1274880686632865823",
+        "channelid": "1274881272698900551"
+    },
+    {
+        "channelname": "obech",
+        "channelcategory": "1274881389077991475",
+        "channelid": "1274881475694690386"
+    },
+    {
+        "channelname": "dsk",
+        "channelcategory": "1274881687381217321",
+        "channelid": "1274881750186856470"
+    },
+    {
+        "channelname": "fya1",
+        "channelcategory": "1335023904015650877",
+        "channelid": "1335024350801428490"
     }
 ]
