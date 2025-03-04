@@ -38,7 +38,7 @@ module.exports = {
 
                 const channel = await guild.channels.create({
                     name: name,
-                    type: 0, // GUILD_TEXT
+                    type: ChannelType.GuildText,
                     nsfw: false,
                     parent: '1340995891754176563',
                     permissionOverwrites: [
@@ -49,8 +49,7 @@ module.exports = {
                                 PermissionsBitField.Flags.SendMessages,
                                 PermissionsBitField.Flags.ReadMessageHistory,
                                 PermissionsBitField.Flags.ManageChannels,
-                            ],
-                            deny: ['UseApplicationCommands']
+                            ]
                         },
                         {
                             id: guild.id,
